@@ -1,0 +1,1 @@
+- 99 Problems in scala  https://aperiodic.net/pip/scala/s-99/

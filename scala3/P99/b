@@ -1,0 +1,15 @@
+#!/bin/bash 
+echo ""
+if [ $# -eq 0 ]; then	
+# 	for srcfile in src/*.scala; do 
+#		echo $srcfile
+	#	$srcfile 
+	#done 
+	scala3 repl <<EOF
+		$(cat src/*.scala)
+EOF
+else
+cat $1 |scala3 repl
+fi
+
+echo ""
