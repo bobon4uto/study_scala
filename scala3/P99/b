@@ -3,13 +3,16 @@ echo ""
 if [ $# -eq 0 ]; then	
 # 	for srcfile in src/*.scala; do 
 #		echo $srcfile
-	#	$srcfile 
-	#done 
-	scala3 repl <<EOF
-		$(cat src/*.scala)
-EOF
+#		scala3 $srcfile 
+#	done 
+#	set srcfiles=src/*.scala
+#	scala3 repl <<EOF
+#	:load	$srcfiles
+#EOF
+echo ""
 else
-cat $1 |scala3 repl
+#cat $1 |scala3 repl
+scala3 $1
 fi
 
 echo ""
