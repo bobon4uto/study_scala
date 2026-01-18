@@ -10,8 +10,9 @@ if [ $# -eq 0 ]; then
 EOF
 echo ""
 else
-#cat $1 |scala repl
-scala $1
+cat $1 |scala repl
+#scala3 $1
+scala3 $1 2>&1 | ./syps
 fi
 
 echo ""
