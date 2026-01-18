@@ -1,52 +1,47 @@
 //   Group the elements of a set into disjoint subsets
+//
+//
+// We have 3 projects and 9 ppl
+// groups must be 2 3 4
+// example solution is 3 3 3
+// first idea is to just get all all all solutios and filter them to get only ones we need.
+// then generalization to x y z instead of 2 3 4
+// it slould be aeasy actually
 import scala.util.Random
 
 
-object Main {
+object MainP {
 
-
-  def removeAt(n:Int, l:List[String]):List[String] = {
+  def removeAt(n:Int, l:List[Any]):List[Any] = {
       l.slice(0,n) :::l.slice(n+1,l.size)
-  } 
-
-  def syphonRandRec(num:Int,lin:List[String]):List[List[String]] = {
- 
-for {choice <- 0 to {lin.size -1} } yield {
-    if (num > 1)
-    {
-      val i = choice
-      val c = lin(i)
-      val nlin = removeAt(i,lin)
-      {for {ret <- syphonRandRec(num-1, nlin) } yield {ret :+ c}}
-    } 
-    else {
-      val i = choice
-      val c = lin(i)
-      List(List(c))
-      
-    }
-}
-  }.toList.reduce(_:::_)
-
-
-
-  def combinations(n:Int, l:List[String]):List[List[String]] = {
-    syphonRandRec(n, l);
   }
-// opt(0) = n
-// opt(1) = k_0
-// opt(2) = k_max
-def group(opt:List[Int], l:List[String]):List[List[List[String]]] = {
-for { i <- opt(1) to opt(2) } yield /* my flesh*/ {combinations(i, l)}
-}.toList
-
+  def rem1(l:List[Any]):List[(List[Any],Any)] = {
+    for {i <- 0 to l.size-1} yield { ( removeAt(i, l), l(i) ) }
+  }.toList
+  def remN(l:(List[Any], List[Any]) , n : Int):List[(List[Any], List[Any])] = {
+    println(l)
+    if (n>1) {
+      for {rem <- rem1(l(0))} yield { remN(rem,n-1)}
+    } else {
+      for {rem <- rem1(l(0))} yield { rem }
+    }
+  }.toList
+  def group_rec(opt:List[Int],lin:List[String]) = {
+    //for { i <- opt } yield {
+      remN((lin,List()), 3)
+    //}
+  }
+  def group(opt:List[Int],lin:List[String]) = {
+    group_rec(opt, lin)
+  }
   @main def main() = {
     println("""
        group(List(2, 2, 5), List("Aldo", "Beat", "Carla", "David", "Evi", "Flip", "Gary", "Hugo", "Ida"))
-      """)
+      """
+      )
     println(
-       group(List(2, 2, 5), List("Aldo", "Beat", "Carla", "David", 
-         "Evi", "Flip", "Gary", "Hugo", "Ida"))
+       group(List(2, 3, 4), List("A", "B", "C", "D"))
+         //"E", "F", "G", "H", "I"))
       )
   }
 

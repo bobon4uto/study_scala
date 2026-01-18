@@ -1,18 +1,17 @@
-#!/bin/bash 
 echo ""
 if [ $# -eq 0 ]; then	
-# 	for srcfile in src/*.scala; do 
-#		echo $srcfile
-#		scala3 $srcfile 
-#	done 
-#	set srcfiles=src/*.scala
-#	scala3 repl <<EOF
-#	:load	$srcfiles
-#EOF
+ 	for srcfile in src/*.scala; do 
+		echo $srcfile
+		scala $srcfile 
+	done 
+	set srcfiles=src/*.scala
+	scala repl <<EOF
+	:load	$srcfiles
+EOF
 echo ""
 else
-#cat $1 |scala3 repl
-scala3 $1
+#cat $1 |scala repl
+scala $1
 fi
 
 echo ""
