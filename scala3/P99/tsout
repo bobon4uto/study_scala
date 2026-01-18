@@ -1,9 +1,0 @@
-[90mCompiling project (Scala 3.7.4, JVM (17))[0m
-[[31merror[0m] ./src/P27.scala:18:64
-[[31merror[0m] Found:    List[(List[String], String)]
-[[31merror[0m] Required: List[(List[String], [1m[32mList[0m[1m[32m[[0mString[1m[32m][0m)]
-[[31merror[0m] ./src/P27.scala:21:91
-[[31merror[0m] Found:    List[[1m[31mList[0m[1m[31m[[0m(List[String], List[String])[1m[31m][0m[1m[31m [0m[1m[31m|[0m[1m[31m [0m[1m[31m([0m[1m[31mList[0m[1m[31m[[0m[1m[31mString[0m[1m[31m][0m[1m[31m,[0m[1m[31m [0m[1m[31mList[0m[1m[31m[[0m[1m[31mString[0m[1m[31m][0m[1m[31m)[0m]
-[[31merror[0m] Required: List[(List[String], List[String])]
-[90mError compiling project (Scala 3.7.4, JVM (17))[0m
-Compilation failed
