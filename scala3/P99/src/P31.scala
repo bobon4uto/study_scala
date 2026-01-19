@@ -60,7 +60,15 @@ package arithmetic {
       res
     }
     def goldbach:(Int,Int) = {
-      (1,1)
+      var retp = (-1,-1)
+      if (self.isEven) {
+        var notfound = true
+        (2 to self-1).iterator.takeWhile(_ => notfound).foreach(i => if (self - i).isPrime && i.isPrime then {retp = (i,self-i); notfound = false} )
+        //for {i <- 1 to self-1} {
+        //  if (self - i).isPrime && i.isPrime then retp = (self-i,i)
+        //}
+      }
+      retp
     }
 
   }
@@ -74,6 +82,16 @@ package arithmetic {
       var lastgcd =0;
       for {i <- 1 to upto} { if (num1%i==0 && num2%i==0) {lastgcd=i} }
       lastgcd
+    }
+    def printGoldbachList(l:Range):Unit = {
+      printGoldbachListLimited(l, 0)
+    }
+    def printGoldbachListLimited(l:Range, limit:Int):Unit = {
+      for {i<-l} { 
+        val gb0 = i.goldbach(0)
+        val gb1 = i.goldbach(1)
+        if gb0 > limit then println(s"$i = $gb0 + $gb1")
+      }
     }
   }
 }
@@ -100,5 +118,7 @@ object MainP30 {
     println(endTime2-startTime2)
     // huh, second method is worse, who would've thought
     println(28.goldbach)
+    printGoldbachList(9 to 20)
+    printGoldbachListLimited(1 to 2000, 50)
   }
 }
